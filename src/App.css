@@ -253,3 +253,8 @@ header p {
   background-color: #3498db; /* כחול בינוני בהובר */
 }
 
+.footer { 
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #555; 
+}

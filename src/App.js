@@ -18,6 +18,7 @@ function App() {
   const [deleteToken, setDeleteToken] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const [isUploadedFromFileOrPaste, setIsUploadedFromFileOrPaste] = useState(false);
 
   const deleteFromCloudinary = async () => {
     if (!deleteToken) return alert("אין טוקן למחיקה.");
@@ -35,6 +36,7 @@ function App() {
       setPrivateText('');
       setIsValid(false);
       setImageURL('');
+      setIsUploadedFromFileOrPaste(false);
     } catch {
       alert("מחיקה נכשלה");
     }
@@ -82,6 +84,7 @@ function App() {
       const uploadedURL = await uploadToCloudinary(file);
       setImageSrc(file);
       processImage(uploadedURL);
+      setIsUploadedFromFileOrPaste(true);
     } catch {
       alert("שגיאה בהעלאה ל-Cloudinary");
     } finally {
@@ -129,6 +132,7 @@ function App() {
         processImage(proxiedURL);
         setIsUploading(false);
         setImageURL('');
+        setIsUploadedFromFileOrPaste(false);
       };
       img.onerror = () => {
         alert("לא ניתן לטעון את התמונה.");
@@ -159,6 +163,7 @@ function App() {
     setPrivateText('');
     setImageURL('');
     setIsValid(false);
+    setIsUploadedFromFileOrPaste(false);
   };
 
   useEffect(() => {
@@ -195,7 +200,7 @@ function App() {
         </div>
       )}
 
-{previewURL && (
+      {previewURL && (
         <div className="preview">
           {deleteToken && (
             <div className="upload-warning">
@@ -212,7 +217,7 @@ function App() {
             <img src={previewURL} alt="תצוגה מקדימה" />
           </div>
 
-          {deleteToken && (
+          {deleteToken && isUploadedFromFileOrPaste && (
             <>
               <div className="upload-warning-delete">
                 <div className="warning-icon">❗</div>
@@ -225,7 +230,6 @@ function App() {
               </div>
             </>
           )}
-
 
           {!isValid && (
             <div className="warnings">
@@ -255,10 +259,17 @@ function App() {
       {copied && <div className="copy-popup">הטקסט הועתק</div>}
       {deleted && <div className="delete-popup">התמונה נמחקה</div>}
 
-      <footer style={{ marginTop: '3rem', fontSize: '0.9rem', color: '#555' }}>
-        <img src="https://www.fxp.co.il/favicon.ico" alt="FXP" style={{ width: '20px', verticalAlign: 'middle', marginLeft: '8px' }} />
-        תוכנת ועוצב על ידי <a href="https://www.fxp.co.il/member.php?u=1313219" target="_blank" rel="noopener noreferrer">zhang</a>
-      </footer>
+      <footer>
+  <img
+    src="https://www.fxp.co.il/favicon.ico"
+    alt="FXP"
+    style={{ width: '20px', verticalAlign: 'middle', marginLeft: '8px' }}
+  />
+  <span dir="rtl" className='footer'>
+    תכנות ועיצוב על ידי <a href="https://www.fxp.co.il/member.php?u=1313219" target="_blank" rel="noopener noreferrer">zhang</a> | <span dir="ltr">2025</span>
+  </span>
+</footer>
+
     </div>
   );
 }
