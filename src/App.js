@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './App.css';
 
@@ -8,7 +8,7 @@ const CLOUD_NAME = "drx7qeajs";
 const UPLOAD_PRESET = "unsigned_preset";
 
 function App() {
-  const [imageSrc, setImageSrc] = useState(null);
+  const [, setImageSrc] = useState(null);
   const [imageURL, setImageURL] = useState('');
   const [previewURL, setPreviewURL] = useState('');
   const [noteText, setNoteText] = useState('');
@@ -92,10 +92,10 @@ function App() {
     }
   };
 
-  const onDrop = useCallback((acceptedFiles) => {
-    console.log("Dropped files:", acceptedFiles);
+  const onDrop = (acceptedFiles) => {
     handleImage(acceptedFiles[0]);
-  }, []);
+  };
+  
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
@@ -169,7 +169,7 @@ function App() {
   useEffect(() => {
     window.addEventListener('paste', handlePaste);
     return () => window.removeEventListener('paste', handlePaste);
-  }, []);
+  }, [handlePaste]);
 
   return (
     <div className="App">
