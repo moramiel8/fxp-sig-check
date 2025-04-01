@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  background: #f0f4fa;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.App {
+  text-align: center;
+  padding: 2rem;
+  direction: rtl;
+}
+
+header h1 {
+  color: #2c3e50;
+  margin-bottom: 0.2rem;
+}
+header p {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+
+.dropzone {
+  border: 2px dashed #999;
+  border-radius: 10px;
+  padding: 2rem;
+  background-color: #fff;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.warning textarea {
+  width: 100%;
+  max-width: 500px; 
+  height: 120px;
+  max-height: 150px; 
+  resize: none;
+  direction: rtl;
+  padding: 0.5rem;
+  font-size: 14px;
+  overflow: auto; /* הוספת פסי גלילה במידת הצורך */
+}
+
+
+.url-input {
+  margin-bottom: 2rem;
+}
+
+.url-input input {
+  padding: 0.6rem;
+  width: 50%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.url-input button {
+  padding: 0.6rem 1.2rem;
+  margin-right: 0.5rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.preview img {
+  max-width: 400px;
+  border: 1px solid #ccc;
+  margin-top: 1rem;
+  border-radius: 10px;
+}
+
+.warning {
+  margin-top: 1rem;
+  background: #f0fff0; 
+  padding: 1rem;
+  border: 1px solid #a5d6a7;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ממרכז את כל מה שבתוך ה-warning כולל הכפתור */
+}
+
+.warning button {
+  align-self: center;
+  margin-top: 0.5rem;
+}
+
+.valid {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: green;
+  font-weight: bold;
+}
+
+.copy-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2ecc71;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  animation: fadeInOut 2.5s ease-in-out;
+}
+
+.copy-button {
+  padding: 0.5rem 1.2rem;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.copy-button:hover {
+  background-color: #27ae60;
+}
+
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(20px); }
+}
+
+.dropzone.custom {
+  border: 2px dashed #999;
+  border-radius: 10px;
+  padding: 2rem;
+  background-color: #fff;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.dropzone.custom:hover {
+  background-color: #f0f8ff;
+}
+
+.delete-button {
+  margin-top: 1rem;
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #555;
+}
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #eee;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 0.5rem;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.delete-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.delete-popup {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background: #e74c3c;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  animation: fadeInOut 2.5s ease-in-out;
+  font-weight: bold;
+}
+
+
+.upload-warning {
+  background: #fff4e5;
+  border: 1px solid #ffa726;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  max-width: 500px;
+  margin: 1rem auto;
+  text-align: right;
+  direction: rtl;
+  font-size: 0.95rem;
+  color: #8a4b00;
+}
+
+.upload-warning-delete {
+  background: #ffe5e5;
+  border: 1px solid #af2828;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  max-width: 500px;
+  margin: 1rem auto;
+  text-align: right;
+  direction: rtl;
+  font-size: 0.95rem;
+  color: #8a0000;
+}
+
+.warning-icon {
+  font-size: 1.8rem;
+}
+
+.warning {
+  margin-top: 1rem;
+  background: #f0fff0; 
+  border: 1px solid rgb(99, 177, 92)
+}
+
+.finish-button {
+  background-color: #5dade2; /* כחול בהיר */
+}
+
+.finish-button:hover {
+  background-color: #3498db; /* כחול בינוני בהובר */
+}
+
